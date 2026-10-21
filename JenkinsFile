@@ -1,0 +1,40 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout GitHub') {
+            steps {
+                echo 'Source code will be checked out from GitHub'
+                checkout scm
+            }
+        }
+
+        stage('Check Docker') {
+            steps {
+                bat 'docker --version'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t hackforge-registration .'
+            }
+        }
+
+        stage('Deploy Application') {
+            steps {
+                bat '''
+                    docker rm -f hackforge-app 2>NUL
+                    docker run -d --name hackforge-app -p 5000:5000 hackforge-registration
+                '''
+            }
+        }
+
+        stage('Verify Deployment') {
+            steps {
+                bat 'docker ps --filter "name=hackforge-app"'
+            }
+        }
+    }
+}
