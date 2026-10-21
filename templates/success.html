@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Successful | HackForge 2026</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <a class="brand" href="/">
+            <span class="brand-icon">H</span>
+            HackForge<span class="brand-year"> '26</span>
+        </a>
+        <span class="nav-label">REGISTRATION CONFIRMED</span>
+    </nav>
+
+    <main class="success-card">
+        <div class="success-icon">✓</div>
+        <span class="form-tag">YOU'RE ON THE LIST</span>
+        <h1>You're registered, <span class="gradient-text">{{ name }}</span>!</h1>
+        <p>
+            Your registration details have been received.
+            Get ready to turn your ideas into something extraordinary.
+        </p>
+
+        <div class="summary">
+            <div class="summary-row">
+                <span>Full name</span>
+                <span>{{ name }}</span>
+            </div>
+            <div class="summary-row">
+             <span>Roll Number</span>
+            <span>{{ roll_number }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Email</span>
+                <span>{{ email }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Phone</span>
+                <span>{{ phone }}</span>
+            </div>
+            <div class="summary-row">
+                <span>College</span>
+                <span>{{ college or "Not provided" }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Team</span>
+                <span>{{ team_name or "Not provided" }}</span>
+            </div>
+            <div class="summary-row">
+                <span>Track</span>
+                <span>{{ course }}</span>
+            </div>
+        </div>
+
+        <p>Big ideas start with a single step. This is yours. 🚀</p>
+        <a class="back-link" href="/">← Back to registration</a>
+    </main>
+
+    <footer>
+        <span>HACKFORGE 2026</span>
+        <span>MADE FOR BUILDERS, BY BUILDERS.</span>
+    </footer>
+</body>
+</html>
